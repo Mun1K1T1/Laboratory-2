@@ -1,0 +1,15 @@
+E:\VS (Applications)\Laboratory 2\bin\Debug\Laboratory 2.exe.config
+E:\VS (Applications)\Laboratory 2\bin\Debug\Laboratory 2.exe
+E:\VS (Applications)\Laboratory 2\bin\Debug\Laboratory 2.pdb
+E:\VS (Applications)\Laboratory 2\bin\Debug\MaterialSkin.dll
+E:\VS (Applications)\Laboratory 2\obj\Debug\Laboratory 2.csproj.AssemblyReference.cache
+E:\VS (Applications)\Laboratory 2\obj\Debug\Laboratory_2.Properties.Resources.resources
+E:\VS (Applications)\Laboratory 2\obj\Debug\Laboratory 2.csproj.GenerateResource.cache
+E:\VS (Applications)\Laboratory 2\obj\Debug\Laboratory 2.csproj.CoreCompileInputs.cache
+E:\VS (Applications)\Laboratory 2\obj\Debug\Laborato.D14E00AF.Up2Date
+E:\VS (Applications)\Laboratory 2\obj\Debug\Laboratory 2.exe
+E:\VS (Applications)\Laboratory 2\obj\Debug\Laboratory 2.pdb
+E:\VS (Applications)\Laboratory 2\obj\Debug\Laboratory_2.MainPage.resources
+E:\VS (Applications)\Laboratory 2\obj\Debug\Laboratory_2.DoctorForm.resources
+E:\VS (Applications)\Laboratory 2\obj\Debug\Laboratory_2.NurseForm.resources
+E:\VS (Applications)\Laboratory 2\obj\Debug\Laboratory_2.PatientForm.resources
