@@ -11,9 +11,7 @@ namespace Laboratory_2.Models
 
         public Nurse(string id, string firstName, string secondName) : base(id, firstName, secondName)
         {
-            _id = id;
-            _firstName = firstName;
-            _secondName = secondName;
+
         }
     }
 }

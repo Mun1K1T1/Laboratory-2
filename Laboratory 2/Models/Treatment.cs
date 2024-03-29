@@ -1,23 +1,26 @@
-﻿namespace Laboratory_2.Models
+﻿using System.Windows.Forms;
+
+namespace Laboratory_2.Models
 {
-    internal class Treatment
+    public interface IWasCreated
     {
-        private string _treatmentName;
-        private string _leadingDoctor;
-        private string _assignedStaffMember;
-        private string _patientName;
+        void MessageAboutBeingCreated(string message);
+    } 
 
-        public string TreatmentName { get; set; }
-        public string LeadingDoctor { get; set; }
-        public string AssignedStaffMember { get; set; }
-        public string PatientName { get; set; }
+    internal class Treatment : IWasCreated
+    {
+        public string PatientFirstName { get; set; }
+        public string PatientSecondName { get; set; }
 
-        public Treatment(string treatmentName, string leadingDoctor, string assignedStaffMember, string patientName) 
+        public Treatment(string patientFirstName, string patientSecondName) 
         {
-            _treatmentName = treatmentName;
-            _leadingDoctor = leadingDoctor;
-            _assignedStaffMember = assignedStaffMember;
-            _patientName = patientName;
+            PatientFirstName = patientFirstName;
+            PatientSecondName = patientSecondName;
+        }
+
+        public void MessageAboutBeingCreated(string message)
+        {
+            MessageBox.Show(message);
         }
     }
 }

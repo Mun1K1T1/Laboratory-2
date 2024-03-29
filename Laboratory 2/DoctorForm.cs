@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
+﻿using Laboratory_2.Models;
 using MaterialSkin;
 using MaterialSkin.Controls;
+using System;
+using System.IO;
 
 namespace Laboratory_2
 {
@@ -32,7 +24,7 @@ namespace Laboratory_2
         private string[] GetPatientsNames(string[] patientsPath)
         {
             patientsNames = patientsPath;
-            for(int i = 0; i < patientsPath.Length; i++)
+            for (int i = 0; i < patientsPath.Length; i++)
             {
                 patientsPath[i] = Path.GetFileNameWithoutExtension(patientsPath[i]);
                 patientsNames[i] = patientsPath[i];
@@ -67,6 +59,10 @@ namespace Laboratory_2
                 treatment.Write(textboxCont[i]);
             }
             treatment.Close();
+
+            string message = "Treatment submitted!";
+            var treatmentObj = new Treatment(firstName, secondName);
+            treatmentObj.MessageAboutBeingCreated(message);
         }
 
         //------------------------------------------------------------------------------------------
@@ -130,7 +126,6 @@ namespace Laboratory_2
         private void TreatmentSubmissionBtn_Click(object sender, EventArgs e)
         {
             TreatmentCreation(treatSubPath, PatientFirstNameTxb.Text, PatientSecNameTxb.Text, ReadTextboxToStringArray());
-            MessageBox.Show("Treatment submitted!");
         }
     }
 }

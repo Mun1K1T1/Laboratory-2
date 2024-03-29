@@ -4,26 +4,22 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Laboratory_2.Models
 {
-    internal class Person
+    public abstract class Person
     {
-        public string _id;
-        public string _firstName;
-        public string _secondName;
+        public string Id { get; set; }
+        public string FirstName { get; set; }
+        public string SecondName { get; set; }
 
-        public virtual string Id { get; set; }
 
-        public virtual string FirstName { get; set; }
-
-        public virtual string SecondName { get; set; }
-
-       public Person(string id, string firstName,  string secondName)
+        public Person(string id, string firstName,  string secondName)
         {
-            _id = id;
-            _firstName = firstName;
-            _secondName = secondName;
+            Id = id;
+            FirstName = firstName;
+            SecondName = secondName;
         }
     }
 }

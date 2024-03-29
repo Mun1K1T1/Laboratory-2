@@ -1,20 +1,20 @@
-﻿using MaterialSkin;
+﻿using Laboratory_2.Models;
+using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
+using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 
 namespace Laboratory_2
 {
     public partial class MainPage : MaterialForm
     {
-        public static string directPath = @"C:\\DataBase";
-        public static string docSubPath = @"C:\\DataBase\DocData\";
-        public static string nurseSubPath = @"C:\\DataBase\NurseData\";
-        public static string patientSubPath = @"C:\\DataBase\PatientData\";
-        public static string treatSubPath = @"C:\\DataBase\TreatmentData\";
+        public const string directPath = @"C:\\DataBase";
+        public const string docSubPath = @"C:\\DataBase\DocData\";
+        public const string nurseSubPath = @"C:\\DataBase\NurseData\";
+        public const string patientSubPath = @"C:\\DataBase\PatientData\";
+        public const string treatSubPath = @"C:\\DataBase\TreatmentData\";
 
         public void DataBaseCreation(string path)
         {
@@ -28,24 +28,29 @@ namespace Laboratory_2
         public void DatabaseSubfolders(string docPath, string nursePath, string patientPath, string treatPath)
         {
             var docdata = new DirectoryInfo(docPath);
-            if (!docdata.Exists)    docdata.Create();
+            if (!docdata.Exists) docdata.Create();
 
             var nursedata = new DirectoryInfo(nursePath);
-            if (!nursedata.Exists)  nursedata.Create();
+            if (!nursedata.Exists) nursedata.Create();
 
             var patientdata = new DirectoryInfo(patientPath);
-            if (!patientdata.Exists)    patientdata.Create();
+            if (!patientdata.Exists) patientdata.Create();
 
             var treatmentdata = new DirectoryInfo(treatPath);
-            if (!treatmentdata.Exists)  treatmentdata.Create();
+            if (!treatmentdata.Exists) treatmentdata.Create();
         }
+        //------------------------------------------------------------------------------------------
+        public delegate void ShowMessage(string message);
+
+        public static void Messaging(string message) => MessageBox.Show(message); // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
         //------------------------------------------------------------------------------------------
         string role;
         string sideSubPath;
         //------------------------------------------------------------------------------------------
         public void GetRole(RadioButton radioBtn)
         {
-            if(radioBtn.Checked) role = radioBtn.Text;
+            if (radioBtn.Checked) role = radioBtn.Text;
         }
         public void UserRegistrationRoleObtain(string Role)
         {
@@ -54,26 +59,42 @@ namespace Laboratory_2
                 case "Patient":
                     var patientForm = new PatientForm();
                     patientForm.Show();
-                    Visible = false;
                     sideSubPath = patientSubPath;
                     break;
 
                 case "Doctor":
                     var doctorForm = new DoctorForm();
                     doctorForm.Show();
-                    Visible = false;
                     sideSubPath = docSubPath;
                     break;
 
                 case "Nurse":
                     var nurseForm = new NurseForm();
                     nurseForm.Show();
-                    Visible = false;
                     sideSubPath = nurseSubPath;
                     break;
             }
         }
         //------------------------------------------------------------------------------------------
+        public void ObjectListCreation(string subpath, string id, string firstName, string secondName)
+        {
+            switch (subpath)
+            {
+                case docSubPath:
+                    var doctorList = new List<Doctor>();
+                    doctorList.Add(new Doctor(id, firstName, secondName));
+                    break;
+                case nurseSubPath:
+                    var nurseList = new List<Nurse>();
+                    nurseList.Add(new Nurse(id, firstName, secondName));
+                    break;
+                case patientSubPath:
+                    var patientList = new List<Patient>();
+                    patientList.Add(new Patient(id, firstName, secondName));
+                    break;
+            }
+        }
+
         public void UserRegistrationFileCreation(string subpath, string id, string firstName, string secondName)
         {
             var fileWriter = new StreamWriter(subpath + firstName + " " + secondName + ".txt");
@@ -81,6 +102,7 @@ namespace Laboratory_2
             fileWriter.WriteLine(firstName);
             fileWriter.WriteLine(secondName);
             fileWriter.Close();
+            ObjectListCreation(subpath, id, firstName, secondName);
         }
         //------------------------------------------------------------------------------------------
 
@@ -104,16 +126,25 @@ namespace Laboratory_2
 
         public void CheckFileForExsistence(string subpath, string id, string firstName, string secondName)
         {
+            string successfulinput = "You're welcome";
+            string wrongInput = "Wrong data";
             if (!File.Exists(subpath + firstName + " " + secondName + ".txt")) return;
             else
             {
                 string[] lines = File.ReadAllLines(subpath + firstName + " " + secondName + ".txt");
                 long IdToCheck = Convert.ToInt64(id);
                 long IdToCheckFrom = Convert.ToInt64(lines[0]);
-                if (IdToCheck == IdToCheckFrom) MessageBox.Show("You're welcome");
+                if (IdToCheck == IdToCheckFrom)
+                {
+                    ShowMessage showMessage = null;
+                    showMessage += Messaging;
+                    showMessage.Invoke(successfulinput);
+                }
                 else
                 {
-                    MessageBox.Show("Wrong data");
+                    ShowMessage showMessage = null;
+                    showMessage += Messaging;
+                    showMessage.Invoke(wrongInput);
                     return;
                 }
             }
