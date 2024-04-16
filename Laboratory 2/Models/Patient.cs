@@ -2,10 +2,9 @@
 {
     internal class Patient : Person
     {
-        //public string AssignedTreatmentName { get; set; }
-        public Patient(string id, string firstName, string secondName/*, string assignedTreatmentName*/) : base(id, firstName, secondName)
+        public Patient(string id, string firstName, string secondName) : base(id, firstName, secondName)
         {
-            //AssignedTreatmentName = assignedTreatmentName;
+
         }
     }
 }

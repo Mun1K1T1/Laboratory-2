@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Laboratory_2.Models
+﻿namespace Laboratory_2.Models
 {
     public abstract class Person
     {
@@ -15,7 +7,7 @@ namespace Laboratory_2.Models
         public string SecondName { get; set; }
 
 
-        public Person(string id, string firstName,  string secondName)
+        public Person(string id, string firstName, string secondName)
         {
             Id = id;
             FirstName = firstName;

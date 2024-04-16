@@ -49,47 +49,49 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DoctorForm.cs">
+    <Compile Include="Forms\DoctorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DoctorForm.Designer.cs">
+    <Compile Include="Forms\DoctorForm.Designer.cs">
       <DependentUpon>DoctorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Doctor.cs" />
+    <Compile Include="Models\Entity.cs" />
+    <Compile Include="Models\Generic.cs" />
     <Compile Include="Models\Nurse.cs" />
     <Compile Include="Models\Patient.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Treatment.cs" />
-    <Compile Include="NurseForm.cs">
+    <Compile Include="Forms\NurseForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NurseForm.Designer.cs">
+    <Compile Include="Forms\NurseForm.Designer.cs">
       <DependentUpon>NurseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PatientForm.cs">
+    <Compile Include="Forms\PatientForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PatientForm.Designer.cs">
+    <Compile Include="Forms\PatientForm.Designer.cs">
       <DependentUpon>PatientForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Models\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="DoctorForm.resx">
+    <EmbeddedResource Include="Forms\DoctorForm.resx">
       <DependentUpon>DoctorForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NurseForm.resx">
+    <EmbeddedResource Include="Forms\NurseForm.resx">
       <DependentUpon>NurseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PatientForm.resx">
+    <EmbeddedResource Include="Forms\PatientForm.resx">
       <DependentUpon>PatientForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -115,6 +117,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Repositories\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

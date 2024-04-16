@@ -2,7 +2,6 @@
 using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 
@@ -15,6 +14,15 @@ namespace Laboratory_2
         public const string nurseSubPath = @"C:\\DataBase\NurseData\";
         public const string patientSubPath = @"C:\\DataBase\PatientData\";
         public const string treatSubPath = @"C:\\DataBase\TreatmentData\";
+
+        private readonly IRepository<Doctor> doctorRepository;
+        private readonly IRepository<Nurse> nurseRepository;
+        private readonly IRepository<Patient> patientRepository;
+
+        //------------------------------------------------------------------------------------------
+        string role;
+        string sideSubPath;
+        //------------------------------------------------------------------------------------------
 
         public void DataBaseCreation(string path)
         {
@@ -45,9 +53,7 @@ namespace Laboratory_2
         public static void Messaging(string message) => MessageBox.Show(message); // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         //------------------------------------------------------------------------------------------
-        string role;
-        string sideSubPath;
-        //------------------------------------------------------------------------------------------
+
         public void GetRole(RadioButton radioBtn)
         {
             if (radioBtn.Checked) role = radioBtn.Text;
@@ -81,16 +87,13 @@ namespace Laboratory_2
             switch (subpath)
             {
                 case docSubPath:
-                    var doctorList = new List<Doctor>();
-                    doctorList.Add(new Doctor(id, firstName, secondName));
+                    doctorRepository.Add(new Doctor(id, firstName, secondName));
                     break;
                 case nurseSubPath:
-                    var nurseList = new List<Nurse>();
-                    nurseList.Add(new Nurse(id, firstName, secondName));
+                    nurseRepository.Add(new Nurse(id, firstName, secondName));
                     break;
                 case patientSubPath:
-                    var patientList = new List<Patient>();
-                    patientList.Add(new Patient(id, firstName, secondName));
+                    patientRepository.Add(new Patient(id, firstName, secondName));
                     break;
             }
         }
@@ -157,6 +160,10 @@ namespace Laboratory_2
         public MainPage()
         {
             InitializeComponent();
+
+            doctorRepository = new GenericRepository<Doctor>();
+            nurseRepository = new GenericRepository<Nurse>();
+            patientRepository = new GenericRepository<Patient>();
 
             instance = this;
             TxtBx1 = FirstNameTxtBox;

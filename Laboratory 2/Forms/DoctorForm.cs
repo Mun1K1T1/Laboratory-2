@@ -62,7 +62,6 @@ namespace Laboratory_2
 
             string message = "Treatment submitted!";
             var treatmentObj = new Treatment(firstName, secondName);
-            treatmentObj.MessageAboutBeingCreated(message);
         }
 
         //------------------------------------------------------------------------------------------
@@ -95,27 +94,7 @@ namespace Laboratory_2
 
         }
 
-        private void PatientNameTbx_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void PatientsListBox_SelectedIndexChanged(object sender, EventArgs e)
+         private void PatientsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             string patientFullName = PatientsListBox.SelectedItem.ToString();
             string[] patientNameElements = patientFullName.Split(' ');

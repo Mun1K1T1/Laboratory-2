@@ -1,7 +1,9 @@
-﻿using MaterialSkin;
+﻿using Laboratory_2.Models;
+using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Laboratory_2
@@ -31,6 +33,8 @@ namespace Laboratory_2
         public static string patientSubPath = @"C:\\DataBase\PatientData\";
         public static string treatSubPath = @"C:\\DataBase\TreatmentData\";
 
+        private readonly IRepository<Patient> patientRepository;
+
         //------------------------------------------------------------------------------------------
         public void FillTheTreatmentTxtBox(string subPath, string firstName, string secondName)
         {
@@ -39,17 +43,28 @@ namespace Laboratory_2
             {
                 MessageBox.Show("This pathient didn't get medical direction!");
             }
+            else
             TreatmentTxtBx.Text = File.ReadAllText(path);
-
         }
         public void DischargePatient(string patientSubPath, string treatmentSubPath, string firstName, string secondName)
         {
-            string patientPath = (patientSubPath + firstName + " " + secondName + ".txt");
+            string patientFileName = firstName + " " + secondName + ".txt";
+            string patientPath = Path.Combine(patientSubPath, patientFileName);
+            string treatmentFileName = firstName + " " + secondName + ".txt";
+            string treatmentPath = Path.Combine(treatmentSubPath, treatmentFileName);
+
+            Patient patientToRemove = patientRepository.GetAll().FirstOrDefault(p => p.FirstName == firstName && p.SecondName == secondName);
+            if (patientToRemove != null)
+            {
+                patientRepository.Remove(patientToRemove);
+            }
+
             File.Delete(patientPath);
-            string theatmentPath = (treatmentSubPath + firstName + " " + secondName + ".txt");
-            File.Delete(theatmentPath);
+            File.Delete(treatmentPath);
+
             MessageBox.Show("You have been successfully discharged!");
         }
+
         //------------------------------------------------------------------------------------------
         private void PatientForm_Load(object sender, EventArgs e)
         {

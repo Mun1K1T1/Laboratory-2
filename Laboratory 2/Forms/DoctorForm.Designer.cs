@@ -51,7 +51,6 @@
             this.DocNameTbx.ReadOnly = true;
             this.DocNameTbx.Size = new System.Drawing.Size(263, 26);
             this.DocNameTbx.TabIndex = 4;
-            this.DocNameTbx.TextChanged += new System.EventHandler(this.PatientNameTbx_TextChanged);
             // 
             // label2
             // 
@@ -88,7 +87,6 @@
             this.label4.Size = new System.Drawing.Size(58, 16);
             this.label4.TabIndex = 12;
             this.label4.Text = "F. Name";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
