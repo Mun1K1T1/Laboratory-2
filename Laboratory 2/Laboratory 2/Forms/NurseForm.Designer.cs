@@ -161,7 +161,7 @@
             this.PerformBtn.TabIndex = 27;
             this.PerformBtn.Text = "Perform";
             this.PerformBtn.UseVisualStyleBackColor = true;
-            this.PerformBtn.Click += new System.EventHandler(this.materialFlatButton1_Click);
+            this.PerformBtn.Click += new System.EventHandler(this.MaterialFlatButton1_Click);
             // 
             // DischargeBtn
             // 
@@ -178,7 +178,7 @@
             this.DischargeBtn.TabIndex = 28;
             this.DischargeBtn.Text = "Discharge";
             this.DischargeBtn.UseVisualStyleBackColor = true;
-            this.DischargeBtn.Click += new System.EventHandler(this.materialFlatButton2_Click);
+            this.DischargeBtn.Click += new System.EventHandler(this.MaterialFlatButton2_Click);
             // 
             // BackBtn
             // 

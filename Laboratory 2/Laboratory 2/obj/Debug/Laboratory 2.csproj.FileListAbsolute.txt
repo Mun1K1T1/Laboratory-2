@@ -76,3 +76,10 @@ E:\VS (Applications)\Laboratory 2\bin\Debug\System.ValueTuple.xml
 E:\VS (Applications)\Laboratory 2\obj\Debug\Laboratory_2.Forms.AuthorizationDoctor.resources
 E:\VS (Applications)\Laboratory 2\obj\Debug\Laboratory_2.Forms.AuthorizationNurse.resources
 E:\VS (Applications)\Laboratory 2\obj\Debug\Laboratory_2.Forms.AuthorizationPatient.resources
+E:\VS (Applications)\Laboratory 2\bin\Debug\Laboratory.Data.dll
+E:\VS (Applications)\Laboratory 2\bin\Debug\Pomelo.EntityFrameworkCore.MySql.dll
+E:\VS (Applications)\Laboratory 2\bin\Debug\Laboratory.Data.pdb
+E:\VS (Applications)\Laboratory 2\bin\Debug\Laboratory.Data.dll.config
+E:\VS (Applications)\Laboratory 2\bin\Debug\Pomelo.EntityFrameworkCore.MySql.xml
+E:\VS (Applications)\Laboratory 2\obj\Debug\Laboratory 2.csproj.SuggestedBindingRedirects.cache
+E:\VS (Applications)\Laboratory 2\obj\Debug\Laboratory 2.exe.config

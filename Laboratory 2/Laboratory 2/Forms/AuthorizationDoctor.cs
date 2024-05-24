@@ -1,4 +1,5 @@
-﻿using Laboratory_2.Repositories;
+﻿using Laboratory_2.Data.Models.Data;
+using Laboratory_2.Repositories;
 using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
@@ -10,17 +11,37 @@ namespace Laboratory_2.Forms
     {
         public const string docSubPath = @"C:\\DataBase\DocData\";
 
-        public static AuthorizationDoctor docRegInst;
-        public TextBox fNameTB;
-        public TextBox sNameTB;
+        readonly FileOperations fileOperations = new FileOperations();
 
-        FileOperations fileOperations = new FileOperations();
+        public void CloseAndOpen()
+        {
+            fileOperations.DocTempFileCreation(FirstNameTxtBox.Text, SecondNameTxtBox.Text);
+            Close();
+            var doctorForm = new DoctorForm();
+            doctorForm.ShowDialog();
+        }
+
+        public void OnPlaceDoctorCreation(DBApplicationContext dBApplicationContext, EDoctor newEDoctor)
+        {
+            try
+            {
+                Repository<EDoctor>
+                    .GetRepo(dBApplicationContext)
+                    .Create(newEDoctor);
+                MessageBox.Show("Success!");
+
+                CloseAndOpen();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occurred: " + ex.ToString());
+                return;
+            }
+        }
+
         public AuthorizationDoctor()
         {
             InitializeComponent();
-            docRegInst = this;
-            fNameTB = FirstNameTxtBox;
-            sNameTB = SecondNameTxtBox;
 
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
@@ -46,12 +67,33 @@ namespace Laboratory_2.Forms
 
         private void SignBtn_Click(object sender, EventArgs e)
         {
+            //    JSON PART
+            //fileOperations.DoctorRegistrationFileCreation(docSubPath, IdTxtBox.Text, FirstNameTxtBox.Text, SecondNameTxtBox.Text);
             try
             {
-                fileOperations.DoctorRegistrationFileCreation(docSubPath, IdTxtBox.Text, FirstNameTxtBox.Text, SecondNameTxtBox.Text);
-                Hide();
-                var doctorForm = new DoctorForm();
-                doctorForm.ShowDialog();
+                var context = new DBApplicationContext();
+                var newDoctor = new EDoctor(Convert.ToInt32(IdTxtBox.Text), FirstNameTxtBox.Text, SecondNameTxtBox.Text);
+                var preExDoctor = Repository<EDoctor>
+                    .GetRepo(context)
+                    .GetFirst(doctor => doctor.Id == newDoctor.Id);
+                if (preExDoctor != null)
+                {
+                    var msBoxResult = MessageBox.Show("Would you like to sign in?", "Such doctor already exists!", MessageBoxButtons.YesNo);
+                    if (msBoxResult == DialogResult.Yes)
+                    {
+                        var newPreExDoctor = Repository<EDoctor>
+                            .GetRepo(context)
+                            .GetFirst(doctor => doctor.Id == Convert.ToInt32(IdTxtBox.Text));
+
+                        MessageBox.Show($"Congratulations!\n" + newPreExDoctor.SecondName + " " + newPreExDoctor.FirstName + " managed to sing in!");
+                        CloseAndOpen();
+                    }
+                    else return;
+                }
+                else
+                {
+                    OnPlaceDoctorCreation(context, newDoctor);
+                }
             }
             catch (Exception ex)
             {
@@ -61,14 +103,33 @@ namespace Laboratory_2.Forms
 
         private void LogBtn_Click(object sender, EventArgs e)
         {
+            //fileOperations.CheckFileForExsistence(docSubPath, IdTxtBox.Text, FirstNameTxtBox.Text, SecondNameTxtBox.Text);
+            //if (fileOperations.CheckIfGetToGo() == true)
+            //{
+            //    
+            //}
             try
             {
-                fileOperations.CheckFileForExsistence(docSubPath, IdTxtBox.Text, FirstNameTxtBox.Text, SecondNameTxtBox.Text);
-                if (fileOperations.CheckIfGetToGo() == true)
+                var context = new DBApplicationContext();
+                var newDoctor = new EDoctor(Convert.ToInt32(IdTxtBox.Text), FirstNameTxtBox.Text, SecondNameTxtBox.Text);
+                var preExDoctor = Repository<EDoctor>
+                    .GetRepo(context)
+                    .GetFirst(doctor => doctor.Id == Convert.ToInt32(IdTxtBox.Text));
+
+                if ((preExDoctor != null) && (preExDoctor.FirstName == FirstNameTxtBox.Text) && (preExDoctor.SecondName == SecondNameTxtBox.Text)
+                    && (preExDoctor.Id == Convert.ToInt32(IdTxtBox.Text)))
                 {
-                    Hide();
-                    var docForm = new DoctorForm();
-                    docForm.ShowDialog();
+                    MessageBox.Show($"Congratulations!\n" + preExDoctor.SecondName + " " + preExDoctor.FirstName + " managed to sing in!");
+                    CloseAndOpen();
+                }
+                else
+                {
+                    var msBoxResult = MessageBox.Show("Would you like to sign up?", "Such patient doesn't exist!", MessageBoxButtons.OKCancel);
+                    if (msBoxResult == DialogResult.OK)
+                    {
+                        OnPlaceDoctorCreation(context, newDoctor);
+                    }
+                    else return;
                 }
             }
             catch (Exception ex)

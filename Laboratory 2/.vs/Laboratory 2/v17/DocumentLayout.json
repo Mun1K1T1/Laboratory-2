@@ -7,36 +7,27 @@
       "RelativeMoniker": "D:0:0:{48815C60-DFF5-4096-8B42-CF1495745E3E}|Laboratory 2.csproj|solutionrelative:forms\\nurseform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{48815C60-DFF5-4096-8B42-CF1495745E3E}|Laboratory 2.csproj|e:\\vs (applications)\\laboratory 2\\models\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{48815C60-DFF5-4096-8B42-CF1495745E3E}|Laboratory 2.csproj|solutionrelative:models\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{48815C60-DFF5-4096-8B42-CF1495745E3E}|Laboratory 2.csproj|e:\\vs (applications)\\laboratory 2\\forms\\patientform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48815C60-DFF5-4096-8B42-CF1495745E3E}|Laboratory 2.csproj|solutionrelative:forms\\patientform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48815C60-DFF5-4096-8B42-CF1495745E3E}|Laboratory 2.csproj|E:\\VS (Applications)\\Laboratory 2\\forms\\authorizationpatient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48815C60-DFF5-4096-8B42-CF1495745E3E}|Laboratory 2.csproj|solutionrelative:forms\\authorizationpatient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48815C60-DFF5-4096-8B42-CF1495745E3E}|Laboratory 2.csproj|E:\\VS (Applications)\\Laboratory 2\\forms\\authorizationdoctor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48815C60-DFF5-4096-8B42-CF1495745E3E}|Laboratory 2.csproj|solutionrelative:forms\\authorizationdoctor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{48815C60-DFF5-4096-8B42-CF1495745E3E}|Laboratory 2.csproj|E:\\VS (Applications)\\Laboratory 2\\forms\\doctorform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{48815C60-DFF5-4096-8B42-CF1495745E3E}|Laboratory 2.csproj|solutionrelative:forms\\doctorform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{48815C60-DFF5-4096-8B42-CF1495745E3E}|Laboratory 2.csproj|E:\\VS (Applications)\\Laboratory 2\\forms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{48815C60-DFF5-4096-8B42-CF1495745E3E}|Laboratory 2.csproj|solutionrelative:forms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{594CF02A-42B8-4FFA-B963-0F06D182F833}|..\\Laboratory.Data\\Laboratory 2.Data.csproj|e:\\vs (applications)\\laboratory.data\\models.data\\etreatment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{48815C60-DFF5-4096-8B42-CF1495745E3E}|Laboratory 2.csproj|E:\\VS (Applications)\\Laboratory 2\\models\\generic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{48815C60-DFF5-4096-8B42-CF1495745E3E}|Laboratory 2.csproj|solutionrelative:models\\generic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{48815C60-DFF5-4096-8B42-CF1495745E3E}|Laboratory 2.csproj|E:\\VS (Applications)\\Laboratory 2\\models\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{48815C60-DFF5-4096-8B42-CF1495745E3E}|Laboratory 2.csproj|solutionrelative:models\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{48815C60-DFF5-4096-8B42-CF1495745E3E}|Laboratory 2.csproj|E:\\VS (Applications)\\Laboratory 2\\forms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{48815C60-DFF5-4096-8B42-CF1495745E3E}|Laboratory 2.csproj|solutionrelative:forms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{48815C60-DFF5-4096-8B42-CF1495745E3E}|Laboratory 2.csproj|E:\\VS (Applications)\\Laboratory 2\\models\\treatment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{48815C60-DFF5-4096-8B42-CF1495745E3E}|Laboratory 2.csproj|solutionrelative:models\\treatment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{48815C60-DFF5-4096-8B42-CF1495745E3E}|Laboratory 2.csproj|E:\\VS (Applications)\\Laboratory 2\\forms\\patientform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{48815C60-DFF5-4096-8B42-CF1495745E3E}|Laboratory 2.csproj|solutionrelative:forms\\patientform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{48815C60-DFF5-4096-8B42-CF1495745E3E}|Laboratory 2.csproj|E:\\VS (Applications)\\Laboratory 2\\forms\\authorizationnurse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48815C60-DFF5-4096-8B42-CF1495745E3E}|Laboratory 2.csproj|solutionrelative:forms\\authorizationnurse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,110 +37,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Person.cs",
-              "DocumentMoniker": "E:\\VS (Applications)\\Laboratory 2\\Models\\Person.cs",
-              "RelativeDocumentMoniker": "Models\\Person.cs",
-              "ToolTip": "E:\\VS (Applications)\\Laboratory 2\\Models\\Person.cs",
-              "RelativeToolTip": "Models\\Person.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-19T07:19:55.002Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "E:\\VS (Applications)\\Laboratory 2\\Forms\\Form1.cs",
-              "RelativeDocumentMoniker": "Forms\\Form1.cs",
-              "ToolTip": "E:\\VS (Applications)\\Laboratory 2\\Forms\\Form1.cs",
-              "RelativeToolTip": "Forms\\Form1.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFwAAAAjAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-08T07:14:27.259Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Entity.cs",
-              "DocumentMoniker": "E:\\VS (Applications)\\Laboratory 2\\Models\\Entity.cs",
-              "RelativeDocumentMoniker": "Models\\Entity.cs",
-              "ToolTip": "E:\\VS (Applications)\\Laboratory 2\\Models\\Entity.cs",
-              "RelativeToolTip": "Models\\Entity.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAwAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-12T07:49:57.315Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "E:\\VS (Applications)\\Laboratory 2\\Forms\\Form1.cs",
-              "RelativeDocumentMoniker": "Forms\\Form1.cs",
-              "ToolTip": "E:\\VS (Applications)\\Laboratory 2\\Forms\\Form1.cs [Design]",
-              "RelativeToolTip": "Forms\\Form1.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-12T06:28:11.101Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DoctorForm.cs",
-              "DocumentMoniker": "E:\\VS (Applications)\\Laboratory 2\\Forms\\DoctorForm.cs",
-              "RelativeDocumentMoniker": "Forms\\DoctorForm.cs",
-              "ToolTip": "E:\\VS (Applications)\\Laboratory 2\\Forms\\DoctorForm.cs",
-              "RelativeToolTip": "Forms\\DoctorForm.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEAAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-12T06:33:33.145Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Generic.cs",
-              "DocumentMoniker": "E:\\VS (Applications)\\Laboratory 2\\Models\\Generic.cs",
-              "RelativeDocumentMoniker": "Models\\Generic.cs",
-              "ToolTip": "E:\\VS (Applications)\\Laboratory 2\\Models\\Generic.cs",
-              "RelativeToolTip": "Models\\Generic.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACQAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-12T05:26:59.444Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Treatment.cs",
-              "DocumentMoniker": "E:\\VS (Applications)\\Laboratory 2\\Models\\Treatment.cs",
-              "RelativeDocumentMoniker": "Models\\Treatment.cs",
-              "ToolTip": "E:\\VS (Applications)\\Laboratory 2\\Models\\Treatment.cs",
-              "RelativeToolTip": "Models\\Treatment.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-29T01:18:19.744Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
               "Title": "PatientForm.cs",
               "DocumentMoniker": "E:\\VS (Applications)\\Laboratory 2\\Forms\\PatientForm.cs",
               "RelativeDocumentMoniker": "Forms\\PatientForm.cs",
               "ToolTip": "E:\\VS (Applications)\\Laboratory 2\\Forms\\PatientForm.cs",
               "RelativeToolTip": "Forms\\PatientForm.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACIAAAAAAAAA",
+              "ViewState": "AQIAAC4AAAAAAAAAAAAswHsAAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-29T02:04:10.957Z"
+              "WhenOpened": "2024-05-24T07:23:41.237Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AuthorizationPatient.cs",
+              "DocumentMoniker": "E:\\VS (Applications)\\Laboratory 2\\Forms\\AuthorizationPatient.cs",
+              "RelativeDocumentMoniker": "Forms\\AuthorizationPatient.cs",
+              "ToolTip": "E:\\VS (Applications)\\Laboratory 2\\Forms\\AuthorizationPatient.cs",
+              "RelativeToolTip": "Forms\\AuthorizationPatient.cs",
+              "ViewState": "AQIAAGsAAAAAAAAAAAAswIgAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-24T07:23:47.957Z"
             },
             {
               "$type": "Document",
@@ -159,10 +72,58 @@
               "RelativeDocumentMoniker": "Forms\\NurseForm.cs",
               "ToolTip": "E:\\VS (Applications)\\Laboratory 2\\Forms\\NurseForm.cs",
               "RelativeToolTip": "Forms\\NurseForm.cs",
-              "ViewState": "AQIAAJkAAAAAAAAAAAAAAKoAAAAAAAAA",
+              "ViewState": "AQIAAFgAAAAAAAAAAAAwwIMAAAA+AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-29T02:03:53.555Z",
+              "WhenOpened": "2024-05-23T20:48:02.931Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ETreatment.cs",
+              "DocumentMoniker": "E:\\VS (Applications)\\Laboratory.Data\\Models.Data\\ETreatment.cs",
+              "RelativeDocumentMoniker": "..\\Laboratory.Data\\Models.Data\\ETreatment.cs",
+              "ToolTip": "E:\\VS (Applications)\\Laboratory.Data\\Models.Data\\ETreatment.cs",
+              "RelativeToolTip": "..\\Laboratory.Data\\Models.Data\\ETreatment.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-23T13:23:41.509Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AuthorizationDoctor.cs",
+              "DocumentMoniker": "E:\\VS (Applications)\\Laboratory 2\\Forms\\AuthorizationDoctor.cs",
+              "RelativeDocumentMoniker": "Forms\\AuthorizationDoctor.cs",
+              "ToolTip": "E:\\VS (Applications)\\Laboratory 2\\Forms\\AuthorizationDoctor.cs",
+              "RelativeToolTip": "Forms\\AuthorizationDoctor.cs",
+              "ViewState": "AQIAAHEAAAAAAAAAAAAAACIAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-23T11:06:51.766Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DoctorForm.cs",
+              "DocumentMoniker": "E:\\VS (Applications)\\Laboratory 2\\Forms\\DoctorForm.cs",
+              "RelativeDocumentMoniker": "Forms\\DoctorForm.cs",
+              "ToolTip": "E:\\VS (Applications)\\Laboratory 2\\Forms\\DoctorForm.cs",
+              "RelativeToolTip": "Forms\\DoctorForm.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAwwBQAAABaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-23T11:17:50.106Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AuthorizationNurse.cs",
+              "DocumentMoniker": "E:\\VS (Applications)\\Laboratory 2\\Forms\\AuthorizationNurse.cs",
+              "RelativeDocumentMoniker": "Forms\\AuthorizationNurse.cs",
+              "ToolTip": "E:\\VS (Applications)\\Laboratory 2\\Forms\\AuthorizationNurse.cs",
+              "RelativeToolTip": "Forms\\AuthorizationNurse.cs",
+              "ViewState": "AQIAACQAAAAAAAAAAAAYwBIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-23T21:01:42.519Z"
             }
           ]
         }

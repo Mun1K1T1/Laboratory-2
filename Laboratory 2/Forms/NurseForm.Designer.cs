@@ -41,6 +41,7 @@
             this.TreatmentTxtBx = new System.Windows.Forms.TextBox();
             this.PerformBtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.DischargeBtn = new MaterialSkin.Controls.MaterialFlatButton();
+            this.BackBtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +54,6 @@
             this.groupBox1.Size = new System.Drawing.Size(238, 256);
             this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // PatientsListBox
             // 
@@ -82,7 +82,6 @@
             this.label5.Size = new System.Drawing.Size(59, 16);
             this.label5.TabIndex = 21;
             this.label5.Text = "S. Name";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label4
             // 
@@ -92,7 +91,6 @@
             this.label4.Size = new System.Drawing.Size(58, 16);
             this.label4.TabIndex = 20;
             this.label4.Text = "F. Name";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // PatientSecNameTxb
             // 
@@ -102,7 +100,6 @@
             this.PatientSecNameTxb.ReadOnly = true;
             this.PatientSecNameTxb.Size = new System.Drawing.Size(222, 28);
             this.PatientSecNameTxb.TabIndex = 19;
-            this.PatientSecNameTxb.TextChanged += new System.EventHandler(this.PatientSecNameTxb_TextChanged);
             // 
             // PatientFirstNameTxb
             // 
@@ -112,7 +109,6 @@
             this.PatientFirstNameTxb.ReadOnly = true;
             this.PatientFirstNameTxb.Size = new System.Drawing.Size(222, 28);
             this.PatientFirstNameTxb.TabIndex = 18;
-            this.PatientFirstNameTxb.TextChanged += new System.EventHandler(this.PatientFirstNameTxb_TextChanged);
             // 
             // NurNameTbx
             // 
@@ -122,7 +118,6 @@
             this.NurNameTbx.ReadOnly = true;
             this.NurNameTbx.Size = new System.Drawing.Size(263, 26);
             this.NurNameTbx.TabIndex = 16;
-            this.NurNameTbx.TextChanged += new System.EventHandler(this.DocNameTbx_TextChanged);
             // 
             // label2
             // 
@@ -166,7 +161,7 @@
             this.PerformBtn.TabIndex = 27;
             this.PerformBtn.Text = "Perform";
             this.PerformBtn.UseVisualStyleBackColor = true;
-            this.PerformBtn.Click += new System.EventHandler(this.materialFlatButton1_Click);
+            this.PerformBtn.Click += new System.EventHandler(this.MaterialFlatButton1_Click);
             // 
             // DischargeBtn
             // 
@@ -183,13 +178,32 @@
             this.DischargeBtn.TabIndex = 28;
             this.DischargeBtn.Text = "Discharge";
             this.DischargeBtn.UseVisualStyleBackColor = true;
-            this.DischargeBtn.Click += new System.EventHandler(this.materialFlatButton2_Click);
+            this.DischargeBtn.Click += new System.EventHandler(this.MaterialFlatButton2_Click);
+            // 
+            // BackBtn
+            // 
+            this.BackBtn.AutoSize = true;
+            this.BackBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackBtn.Depth = 0;
+            this.BackBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 2F);
+            this.BackBtn.Icon = null;
+            this.BackBtn.Location = new System.Drawing.Point(678, 35);
+            this.BackBtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.BackBtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.BackBtn.Name = "BackBtn";
+            this.BackBtn.Primary = false;
+            this.BackBtn.Size = new System.Drawing.Size(85, 36);
+            this.BackBtn.TabIndex = 29;
+            this.BackBtn.Text = "<- Back";
+            this.BackBtn.UseVisualStyleBackColor = true;
+            this.BackBtn.Click += new System.EventHandler(this.BackBtn_Click);
             // 
             // NurseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.BackBtn);
             this.Controls.Add(this.DischargeBtn);
             this.Controls.Add(this.PerformBtn);
             this.Controls.Add(this.TreatmentTxtBx);
@@ -226,5 +240,6 @@
         private System.Windows.Forms.TextBox TreatmentTxtBx;
         private MaterialSkin.Controls.MaterialFlatButton PerformBtn;
         private MaterialSkin.Controls.MaterialFlatButton DischargeBtn;
+        private MaterialSkin.Controls.MaterialFlatButton BackBtn;
     }
 }

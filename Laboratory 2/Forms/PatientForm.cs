@@ -1,4 +1,6 @@
-﻿using Laboratory_2.Models;
+﻿using Laboratory_2.Data.Models.Data;
+using Laboratory_2.Forms;
+using Laboratory_2.Repositories;
 using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
@@ -10,16 +12,12 @@ namespace Laboratory_2
 {
     public partial class PatientForm : MaterialForm
     {
-
-        public static PatientForm instance;
         public PatientForm()
         {
             InitializeComponent();
 
-            instance = this;
-
             var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(instance);
+            materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
 
             materialSkinManager.ColorScheme = new ColorScheme(
@@ -33,84 +31,119 @@ namespace Laboratory_2
         public static string patientSubPath = @"C:\\DataBase\PatientData\";
         public static string treatSubPath = @"C:\\DataBase\TreatmentData\";
 
-        private readonly IRepository<Patient> patientRepository;
+        FileOperations fileOperations = new FileOperations();
 
         //------------------------------------------------------------------------------------------
         public void FillTheTreatmentTxtBox(string subPath, string firstName, string secondName)
         {
-            string path = (subPath + firstName + " " + secondName + ".txt");
+            string path = (subPath + firstName + " " + secondName + ".json");
             if (!File.Exists(path))
             {
                 MessageBox.Show("This pathient didn't get medical direction!");
             }
             else
-            TreatmentTxtBx.Text = File.ReadAllText(path);
-        }
-        public void DischargePatient(string patientSubPath, string treatmentSubPath, string firstName, string secondName)
-        {
-            string patientFileName = firstName + " " + secondName + ".txt";
-            string patientPath = Path.Combine(patientSubPath, patientFileName);
-            string treatmentFileName = firstName + " " + secondName + ".txt";
-            string treatmentPath = Path.Combine(treatmentSubPath, treatmentFileName);
-
-            Patient patientToRemove = patientRepository.GetAll().FirstOrDefault(p => p.FirstName == firstName && p.SecondName == secondName);
-            if (patientToRemove != null)
             {
-                patientRepository.Remove(patientToRemove);
+                string jsonContent = fileOperations.ReadJsonFromFile(treatSubPath, firstName, secondName);
+                string[] treatment = fileOperations.GetUserTreatmentContent(jsonContent);
+                TreatmentTxtBx.Text = String.Join("\n", treatment);
+
             }
+        }
 
-            File.Delete(patientPath);
-            File.Delete(treatmentPath);
+        public string TreatmentTextAcquire()
+        {
+            string patientFullName = PatientNameTbx.Text;
+            string[] patientNameElements = patientFullName.Split(' ');
+            string patientFirstName = patientNameElements[0];
+            string patientSecondName = patientNameElements[1];
+            var context = new DBApplicationContext();
+            var query = from treatment in context.Treatments
+                        where treatment.PatientFirstName == patientFirstName
+                        where treatment.PatientSecondName == patientSecondName
+                        select new { treatment.TreatmentContent };
+            return query.FirstOrDefault()?.TreatmentContent;
+        }
 
-            MessageBox.Show("You have been successfully discharged!");
+        private void DeletePatient()
+        {
+            string patientFullName = PatientNameTbx.Text;
+            string[] patientNameElements = patientFullName.Split(' ');
+            string patientFirstName = patientNameElements[0];
+            string patientSecondName = patientNameElements[1];
+            try
+            {
+                try
+                {
+                    var context = new DBApplicationContext();
+                    var preExPatient = Repository<EPatient>
+                        .GetRepo(context)
+                        .GetFirst(patient => patient.FirstName + patient.SecondName == patientFirstName + patientSecondName);
+                    if (preExPatient != null)
+                    {
+                        Guid patGuid = preExPatient.Key;
+                        Repository<EPatient>
+                            .GetRepo(context)
+                            .Delete(patGuid);
+                        MessageBox.Show("Patient was deleted!");
+                    }
+                    try
+                    {
+                        var preExTreatment = Repository<ETreatment>
+                            .GetRepo(context)
+                            .GetFirst(treatment => treatment.PatientFirstName + treatment.PatientSecondName == patientFirstName + patientSecondName);
+                        if (preExTreatment != null)
+                        {
+                            Guid treatGuid = preExTreatment.Key;
+                            Repository<ETreatment>
+                                .GetRepo(context)
+                                .Delete(treatGuid);
+                            MessageBox.Show("Patient's treatment was deleted!");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Failed to delete patient's treatment - \n" + ex);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to delete patient - \n" + ex);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occurred - \n" + ex);
+            }
         }
 
         //------------------------------------------------------------------------------------------
         private void PatientForm_Load(object sender, EventArgs e)
         {
-            patientName = MainPage.instance.TxtBx1.Text + " " + MainPage.instance.TxtBx2.Text;
-            PatientNameTbx.Text = patientName;
-
-            string patientFullName = PatientNameTbx.Text;
-            string[] patientNameElements = patientFullName.Split(' ');
-            string patientFirstName = patientNameElements[0];
-            string patientSecondName = patientNameElements[1];
-
-            FillTheTreatmentTxtBox(treatSubPath, patientFirstName, patientSecondName);
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TreatmentTxtBx_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TreatmentsListBx_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+            PatientNameTbx.Text = fileOperations.ReadTempJson();
+            fileOperations.ClearTempDir();
+            try
+            {
+                //FillTheTreatmentTxtBox(treatSubPath, AuthorizationPatient.patRegInst.fNameTB.Text, AuthorizationPatient.patRegInst.sNameTB.Text);
+                string treatmentText = TreatmentTextAcquire();
+                if (treatmentText != null) TreatmentTxtBx.AppendText(treatmentText);
+                else TreatmentTxtBx.Text = "No content available";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured: \n" + ex);
+            }
         }
 
         private void DischargeBtn_Click(object sender, EventArgs e)
         {
-            string patientFullName = PatientNameTbx.Text;
-            string[] patientNameElements = patientFullName.Split(' ');
-            string patientFirstName = patientNameElements[0];
-            string patientSecondName = patientNameElements[1];
-            DischargePatient(patientSubPath, treatSubPath, patientFirstName, patientSecondName);
+            DeletePatient();
+            //fileOperations.DischargePatient(patientSubPath, treatSubPath, patientFirstName, patientSecondName);
+        }
+
+        private void BackBtn_Click(object sender, EventArgs e)
+        {
+            Hide();
+            MainPage.form1Main.Show();
         }
     }
 }

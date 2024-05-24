@@ -1,6 +1,6 @@
 ﻿namespace Laboratory_2.Models
 {
-    public abstract class Person
+    public class Person : Entity
     {
         public string Id { get; set; }
         public string FirstName { get; set; }

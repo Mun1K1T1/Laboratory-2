@@ -40,6 +40,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.TreatmentTxtBx = new System.Windows.Forms.TextBox();
+            this.BackBtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -160,11 +161,30 @@
             this.TreatmentTxtBx.Size = new System.Drawing.Size(403, 264);
             this.TreatmentTxtBx.TabIndex = 17;
             // 
+            // BackBtn
+            // 
+            this.BackBtn.AutoSize = true;
+            this.BackBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackBtn.Depth = 0;
+            this.BackBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 2F);
+            this.BackBtn.Icon = null;
+            this.BackBtn.Location = new System.Drawing.Point(703, 31);
+            this.BackBtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.BackBtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.BackBtn.Name = "BackBtn";
+            this.BackBtn.Primary = false;
+            this.BackBtn.Size = new System.Drawing.Size(85, 36);
+            this.BackBtn.TabIndex = 18;
+            this.BackBtn.Text = "<- Back";
+            this.BackBtn.UseVisualStyleBackColor = true;
+            this.BackBtn.Click += new System.EventHandler(this.BackBtn_Click);
+            // 
             // DoctorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.BackBtn);
             this.Controls.Add(this.TreatmentTxtBx);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
@@ -198,5 +218,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox PatientsListBox;
         private System.Windows.Forms.TextBox TreatmentTxtBx;
+        private MaterialSkin.Controls.MaterialFlatButton BackBtn;
     }
 }

@@ -33,6 +33,7 @@
             this.TreatmentTxtBx = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.DischargeBtn = new MaterialSkin.Controls.MaterialFlatButton();
+            this.BackBtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.SuspendLayout();
             // 
             // PatientNameTbx
@@ -43,7 +44,6 @@
             this.PatientNameTbx.ReadOnly = true;
             this.PatientNameTbx.Size = new System.Drawing.Size(263, 33);
             this.PatientNameTbx.TabIndex = 2;
-            this.PatientNameTbx.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label2
             // 
@@ -89,11 +89,30 @@
             this.DischargeBtn.UseVisualStyleBackColor = true;
             this.DischargeBtn.Click += new System.EventHandler(this.DischargeBtn_Click);
             // 
+            // BackBtn
+            // 
+            this.BackBtn.AutoSize = true;
+            this.BackBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackBtn.Depth = 0;
+            this.BackBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 2F);
+            this.BackBtn.Icon = null;
+            this.BackBtn.Location = new System.Drawing.Point(694, 31);
+            this.BackBtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.BackBtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.BackBtn.Name = "BackBtn";
+            this.BackBtn.Primary = false;
+            this.BackBtn.Size = new System.Drawing.Size(85, 36);
+            this.BackBtn.TabIndex = 30;
+            this.BackBtn.Text = "<- Back";
+            this.BackBtn.UseVisualStyleBackColor = true;
+            this.BackBtn.Click += new System.EventHandler(this.BackBtn_Click);
+            // 
             // PatientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 370);
+            this.Controls.Add(this.BackBtn);
             this.Controls.Add(this.DischargeBtn);
             this.Controls.Add(this.TreatmentTxtBx);
             this.Controls.Add(this.label1);
@@ -108,10 +127,11 @@
         }
 
         #endregion
-        private System.Windows.Forms.TextBox PatientNameTbx;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox TreatmentTxtBx;
         private System.Windows.Forms.Label label1;
         private MaterialSkin.Controls.MaterialFlatButton DischargeBtn;
+        public System.Windows.Forms.TextBox PatientNameTbx;
+        private MaterialSkin.Controls.MaterialFlatButton BackBtn;
     }
 }
