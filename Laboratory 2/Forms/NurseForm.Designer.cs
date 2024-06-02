@@ -187,14 +187,14 @@
             this.BackBtn.Depth = 0;
             this.BackBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 2F);
             this.BackBtn.Icon = null;
-            this.BackBtn.Location = new System.Drawing.Point(678, 35);
+            this.BackBtn.Location = new System.Drawing.Point(673, 35);
             this.BackBtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.BackBtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.BackBtn.Name = "BackBtn";
             this.BackBtn.Primary = false;
-            this.BackBtn.Size = new System.Drawing.Size(85, 36);
+            this.BackBtn.Size = new System.Drawing.Size(89, 36);
             this.BackBtn.TabIndex = 29;
-            this.BackBtn.Text = "<- Back";
+            this.BackBtn.Text = "<- HOME";
             this.BackBtn.UseVisualStyleBackColor = true;
             this.BackBtn.Click += new System.EventHandler(this.BackBtn_Click);
             // 

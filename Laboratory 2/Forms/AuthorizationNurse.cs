@@ -3,6 +3,7 @@ using Laboratory_2.Repositories;
 using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Laboratory_2.Forms
@@ -28,15 +29,15 @@ namespace Laboratory_2.Forms
                 );
         }
 
-        public void CloseAndOpen()
+        public async Task CloseAndOpen()
         {
-            fileOperations.DocTempFileCreation(FirstNameTxtBox.Text, SecondNameTxtBox.Text);
+            await fileOperations.DocTempFileCreation(FirstNameTxtBox.Text, SecondNameTxtBox.Text);
             Close();
             var nurseForm = new NurseForm();
             nurseForm.ShowDialog();
         }
 
-        public void OnPlaceDoctorCreation(DBApplicationContext dBApplicationContext, ENurse newENurse)
+        public async Task OnPlaceDoctorCreation(DBApplicationContext dBApplicationContext, ENurse newENurse)
         {
             try
             {
@@ -45,7 +46,7 @@ namespace Laboratory_2.Forms
                     .Create(newENurse);
                 MessageBox.Show("Success!");
 
-                CloseAndOpen();
+                await CloseAndOpen();
             }
             catch (Exception ex)
             {
@@ -61,11 +62,11 @@ namespace Laboratory_2.Forms
 
         private void BackBtn_Click(object sender, EventArgs e)
         {
-            Hide();
-            MainPage.form1Main.Show();
+                Hide();
+                MainPage.form1Main.Show();
         }
 
-        private void SignBtn_Click(object sender, EventArgs e)
+        private async void SignBtn_Click(object sender, EventArgs e)
         {                //fileOperations.PatientRegistrationFileCreation(nurseSubPath, IdTxtBox.Text, FirstNameTxtBox.Text, SecondNameTxtBox.Text);
 
             try
@@ -85,13 +86,13 @@ namespace Laboratory_2.Forms
                             .GetFirst(doctor => doctor.Id == Convert.ToInt32(IdTxtBox.Text));
 
                         MessageBox.Show($"Congratulations!\n" + newPreExNurse.SecondName + " " + newPreExNurse.FirstName + " managed to sing in!");
-                        CloseAndOpen();
+                        await CloseAndOpen();
                     }
                     else return;
                 }
                 else
                 {
-                    OnPlaceDoctorCreation(context, newNurse);
+                    await OnPlaceDoctorCreation(context, newNurse);
                 }
             }
             catch (Exception ex)
@@ -100,7 +101,7 @@ namespace Laboratory_2.Forms
             }
         }
 
-        private void LogBtn_Click(object sender, EventArgs e)
+        private async void LogBtn_Click(object sender, EventArgs e)
         {                //fileOperations.CheckFileForExsistence(nurseSubPath, IdTxtBox.Text, FirstNameTxtBox.Text, SecondNameTxtBox.Text);
                          //if (fileOperations.CheckIfGetToGo() == true)
                          //{
@@ -120,14 +121,14 @@ namespace Laboratory_2.Forms
                     && (preExNurse.Id == Convert.ToInt32(IdTxtBox.Text)))
                 {
                     MessageBox.Show($"Congratulations!\n" + preExNurse.SecondName + " " + preExNurse.FirstName + " managed to sing in!");
-                    CloseAndOpen();
+                    await CloseAndOpen();
                 }
                 else
                 {
                     var msBoxResult = MessageBox.Show("Would you like to sign up?", "Such patient doesn't exist!", MessageBoxButtons.OKCancel);
                     if (msBoxResult == DialogResult.OK)
                     {
-                        OnPlaceDoctorCreation(context, newNurse);
+                        await OnPlaceDoctorCreation(context, newNurse);
                     }
                     else return;
                 }

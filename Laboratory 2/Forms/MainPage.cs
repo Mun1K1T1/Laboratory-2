@@ -3,6 +3,7 @@ using Laboratory_2.Repositories;
 using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
+using System.Threading.Tasks;
 
 namespace Laboratory_2
 {
@@ -16,7 +17,7 @@ namespace Laboratory_2
         public const string tempSubPath = @"C:\\DataBase\TempData\";
 
         //------------------------------------------------------------------------------------------
-        FileOperations fileOperations = new FileOperations();
+        readonly FileOperations fileOperations = new FileOperations();
         //##########################################################################################
         public static MainPage form1Main = new MainPage();
         public MainPage()
@@ -34,31 +35,36 @@ namespace Laboratory_2
                 );
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private async void Form1_Load(object sender, EventArgs e)
         {
-            fileOperations.DataBaseCreation();
-            fileOperations.DatabaseSubfolders();
+            await fileOperations.DataBaseCreation();
+            await fileOperations.DatabaseSubfolders();
         }
 
         private void PatientBtn_Click(object sender, EventArgs e)
         {
             var authorizationPatient = new AuthorizationPatient();
-            authorizationPatient.Show();
-            Hide();
-        }
+            
+                authorizationPatient.Show();
+                Hide();
+        }        
 
         private void DoctorBtn_Click(object sender, EventArgs e)
         {
             var authorizationDoctor = new AuthorizationDoctor();
-            authorizationDoctor.Show();
-            Hide();
+            
+                authorizationDoctor.Show();
+                Hide();
+            
         }
 
         private void NurseBtn_Click(object sender, EventArgs e)
         {
             var authorizationNurse = new AuthorizationNurse();
-            authorizationNurse.Show();
-            Hide();
+            
+                authorizationNurse.Show();
+                Hide();
+            
         }
     }
 }

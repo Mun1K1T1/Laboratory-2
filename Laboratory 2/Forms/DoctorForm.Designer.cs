@@ -173,9 +173,9 @@
             this.BackBtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.BackBtn.Name = "BackBtn";
             this.BackBtn.Primary = false;
-            this.BackBtn.Size = new System.Drawing.Size(85, 36);
+            this.BackBtn.Size = new System.Drawing.Size(89, 36);
             this.BackBtn.TabIndex = 18;
-            this.BackBtn.Text = "<- Back";
+            this.BackBtn.Text = "<- HOME";
             this.BackBtn.UseVisualStyleBackColor = true;
             this.BackBtn.Click += new System.EventHandler(this.BackBtn_Click);
             // 

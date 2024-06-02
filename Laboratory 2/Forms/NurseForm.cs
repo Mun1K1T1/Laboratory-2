@@ -2,8 +2,10 @@
 using Laboratory_2.Repositories;
 using MaterialSkin;
 using MaterialSkin.Controls;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Laboratory_2
@@ -34,56 +36,13 @@ namespace Laboratory_2
         {
             //string[] names = fileOperations.GetPatientsNames(fileOperations.FindPatientsFiles(patAdress));
             //for (int i = 0; i < names.Length; i++) PatientsListBox.Items.Add(names[i]);
-            var context = new DBApplicationContext();
-            var query = from patient in context.Patients
-                        orderby patient.FirstName ascending
-                        select new { patient.FirstName, patient.SecondName };
-            foreach (var patient in query) PatientsListBox.Items.Add(patient.FirstName + " " + patient.SecondName);
-
-        }
-
-        //------------------------------------------------------------------------------------------
-        private void DeletePatient()
-        {
             try
             {
-                try
-                {
-                    var context = new DBApplicationContext();
-                    var preExPatient = Repository<EPatient>
-                        .GetRepo(context)
-                        .GetFirst(patient => patient.FirstName + patient.SecondName == PatientFirstNameTxb.Text + PatientSecNameTxb.Text);
-                    if (preExPatient != null)
-                    {
-                        Guid patGuid = preExPatient.Key;
-                        Repository<EPatient>
-                            .GetRepo(context)
-                            .Delete(patGuid);
-                        MessageBox.Show("Patient was deleted!");
-                    }
-                    try
-                    {
-                        var preExTreatment = Repository<ETreatment>
-                            .GetRepo(context)
-                            .GetFirst(treatment => treatment.PatientFirstName + treatment.PatientSecondName == PatientFirstNameTxb.Text + PatientSecNameTxb.Text);
-                        if (preExTreatment != null)
-                        {
-                            Guid treatGuid = preExTreatment.Key;
-                            Repository<ETreatment>
-                                .GetRepo(context)
-                                .Delete(treatGuid);
-                            MessageBox.Show("Patient's treatment was deleted!");
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Failed to delete patient's treatment - \n" + ex);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Failed to delete patient - \n" + ex);
-                }
+                var context = new DBApplicationContext();
+                    var query = from patient in context.Patients
+                                orderby patient.FirstName ascending
+                                select new { patient.FirstName, patient.SecondName };
+                    foreach (var patient in query) PatientsListBox.Items.Add(patient.FirstName + " " + patient.SecondName);
             }
             catch (Exception ex)
             {
@@ -91,34 +50,85 @@ namespace Laboratory_2
             }
         }
 
-        public string TreatmentTextAcquire()
+        //------------------------------------------------------------------------------------------
+        private void DeletePatient()
         {
-            var context = new DBApplicationContext();
-            var query = from treatment in context.Treatments
-                        where treatment.PatientFirstName == PatientFirstNameTxb.Text
-                        where treatment.PatientSecondName == PatientSecNameTxb.Text
-                        select new{ treatment.TreatmentContent };
+                try
+                {
+                    try
+                    {
+                        var context = new DBApplicationContext();
+                        var preExPatient = Repository<EPatient>
+                            .GetRepo(context)
+                            .GetFirst(patient => patient.FirstName + patient.SecondName == PatientFirstNameTxb.Text + PatientSecNameTxb.Text);
+                        if (preExPatient != null)
+                        {
+                            Guid patGuid = preExPatient.Key;
+                            Repository<EPatient>
+                                .GetRepo(context)
+                                .Delete(patGuid);
+                            MessageBox.Show("Patient was deleted!");
+                        }
+                        try
+                        {
+                            var preExTreatment = Repository<ETreatment>
+                                .GetRepo(context)
+                                .GetFirst(treatment => treatment.PatientFirstName + treatment.PatientSecondName == PatientFirstNameTxb.Text + PatientSecNameTxb.Text);
+                            if (preExTreatment != null)
+                            {
+                                Guid treatGuid = preExTreatment.Key;
+                                Repository<ETreatment>
+                                    .GetRepo(context)
+                                    .Delete(treatGuid);
+                                MessageBox.Show("Patient's treatment was deleted!");
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Failed to delete patient's treatment - \n" + ex);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Failed to delete patient - \n" + ex);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error occurred - \n" + ex);
+                }
+        }
 
-            var foundTretment = query.FirstOrDefault();
-            if (foundTretment != null)
+        public async Task<string> TreatmentTextAcquire()
+        {
+            using (var context = new DBApplicationContext())
             {
-                return foundTretment.TreatmentContent;
-            }
-            else
-            {
-                return "No treatment found";
+                var query = from treatment in context.Treatments
+                            where treatment.PatientFirstName == PatientFirstNameTxb.Text
+                            where treatment.PatientSecondName == PatientSecNameTxb.Text
+                            select new { treatment.TreatmentContent };
+
+                var foundTretment = await query.FirstOrDefaultAsync();
+                if (foundTretment != null)
+                {
+                    return foundTretment.TreatmentContent;
+                }
+                else
+                {
+                    return "No treatment found";
+                }
             }
             //return query.FirstOrDefault()?.TreatmentContent;
         }
 
-        private void NurseForm_Load(object sender, EventArgs e)
+        private async void NurseForm_Load(object sender, EventArgs e)
         {
-            NurNameTbx.Text = fileOperations.ReadTempJson();
-            fileOperations.ClearTempDir();
+            NurNameTbx.Text = await fileOperations.ReadTempJson();
+            await fileOperations.ClearTempDir();
             AddItemsPatientsListview();
         }
 
-        private void PatientsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private async void PatientsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             string patientFullName = PatientsListBox.SelectedItem.ToString();
             string[] patientNameElements = patientFullName.Split(' ');
@@ -127,7 +137,7 @@ namespace Laboratory_2
 
             TreatmentTxtBx.Clear();
 
-            string treatmentText = TreatmentTextAcquire();
+            string treatmentText = await TreatmentTextAcquire();
             if (treatmentText != null) TreatmentTxtBx.AppendText(treatmentText);
             else TreatmentTxtBx.Text = "No content available";
             //string[] treatmentContext = fileOperations.FillTheTreatment(treatSubPath, patientNameElements[0], patientNameElements[1]);
@@ -155,7 +165,7 @@ namespace Laboratory_2
                 DeletePatient();
                 PatientsListBox.Items.Clear();
                 TreatmentTxtBx.Text = String.Empty;
-                AddItemsPatientsListview(/*patientSubPath*/);
+                AddItemsPatientsListview();
             }
             catch (Exception ex)
             {
@@ -172,7 +182,7 @@ namespace Laboratory_2
                 DeletePatient();
                 PatientsListBox.Items.Clear();
                 TreatmentTxtBx.Text = String.Empty;
-                AddItemsPatientsListview(/*patientSubPath*/);
+                AddItemsPatientsListview();
             }
             catch (Exception ex)
             {
@@ -182,8 +192,8 @@ namespace Laboratory_2
 
         private void BackBtn_Click(object sender, EventArgs e)
         {
-            Close();
-            MainPage.form1Main.Show();
+                Close();
+                MainPage.form1Main.Show();
         }
     }
 }

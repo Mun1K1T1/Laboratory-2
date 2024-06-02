@@ -5,6 +5,7 @@ using MaterialSkin.Controls;
 using System;
 using System.Runtime.Remoting.Contexts;
 using System.Security.Cryptography.X509Certificates;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Laboratory_2.Forms
@@ -13,17 +14,17 @@ namespace Laboratory_2.Forms
     {
         public const string patientSubPath = @"C:\\DataBase\PatientData\";
 
-        FileOperations fileOperations = new FileOperations();
+        readonly FileOperations fileOperations = new FileOperations();
 
-        public void CloseAndOpen()
+        public async Task CloseAndOpen()
         {
-            fileOperations.DocTempFileCreation(FirstNameTxtBox.Text, SecondNameTxtBox.Text);
+            await fileOperations.PatTempFileCreation(FirstNameTxtBox.Text, SecondNameTxtBox.Text);
             Close();
             var patientForm = new PatientForm();
             patientForm.ShowDialog();
         }
 
-        public void OnPlacePatientCreation(DBApplicationContext dBApplicationContext, EPatient newEPatient)
+        public async Task OnPlacePatientCreation(DBApplicationContext dBApplicationContext, EPatient newEPatient)
         {
             try
             {
@@ -32,7 +33,7 @@ namespace Laboratory_2.Forms
                     .Create(newEPatient);
                 MessageBox.Show("Success!");
 
-                CloseAndOpen();
+                await CloseAndOpen();
             }
             catch (Exception ex)
             {
@@ -64,11 +65,11 @@ namespace Laboratory_2.Forms
 
         private void BackBtn_Click(object sender, EventArgs e)
         {
-            Hide();
-            MainPage.form1Main.Show();
+                Hide();
+                MainPage.form1Main.Show();
         }
 
-        private void SignBtn_Click(object sender, EventArgs e)
+        private async void SignBtn_Click(object sender, EventArgs e)
         {
             try
             {   
@@ -91,13 +92,13 @@ namespace Laboratory_2.Forms
                             .GetFirst(patient => patient.Id == Convert.ToInt32(IdTxtBox.Text));
 
                         MessageBox.Show($"Congratulations!\n" + newPreExPatient.SecondName + " " + preExPatient.FirstName + " managed to sing in!");
-                        CloseAndOpen();
+                        await CloseAndOpen();
                         }
                     else return;
                 }
                 else
                 {
-                    OnPlacePatientCreation(context, newPatient);
+                    await OnPlacePatientCreation(context, newPatient);
                 }
             }
             catch (Exception ex)
@@ -106,7 +107,7 @@ namespace Laboratory_2.Forms
             }
         }
 
-        private void LogBtn_Click(object sender, EventArgs e)
+        private async void LogBtn_Click(object sender, EventArgs e)
         {
             try
             {
@@ -125,14 +126,14 @@ namespace Laboratory_2.Forms
                     && (preExPatient.Id == Convert.ToInt32(IdTxtBox.Text)))
                 {
                     MessageBox.Show($"Congratulations!\n" + preExPatient.SecondName + " " + preExPatient.FirstName +" managed to sing in!");
-                    CloseAndOpen();
+                    await CloseAndOpen();
                 }
                 else
                 {
                     var msBoxResult = MessageBox.Show("Would you like to sign up?", "Such patient doesn't exist!", MessageBoxButtons.OKCancel);
                     if (msBoxResult == DialogResult.OK)
                     {
-                        OnPlacePatientCreation(context, newPatient);
+                        await OnPlacePatientCreation(context, newPatient);
                     }
                     else return;
                 }

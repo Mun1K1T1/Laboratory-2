@@ -64,6 +64,7 @@
             // 
             this.IdTxtBox.Location = new System.Drawing.Point(158, 95);
             this.IdTxtBox.Name = "IdTxtBox";
+            this.IdTxtBox.PasswordChar = '*';
             this.IdTxtBox.Size = new System.Drawing.Size(327, 22);
             this.IdTxtBox.TabIndex = 26;
             // 
